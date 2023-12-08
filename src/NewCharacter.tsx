@@ -7,15 +7,20 @@ type AddCharacterProps = {
 
 export default function NewCharacter(props:AddCharacterProps){
 
-    const [id, setId] = useState(0)
-    const [name, setName] = useState("")
-    const [status, setStatus] = useState("")
-    const [species, setSpecies] = useState("")
-    const [type, setType] = useState("")
+    const [id, setId] = useState<number>(0)
+    const [name, setName] = useState<string>("")
+    const [status, setStatus] = useState<string>("")
+    const [species, setSpecies] = useState<string>("")
+    const [type, setType] = useState<string>("")
+
+    // diese Version habe ich auch unten in kurz geschrieben
+    function updateId(event:ChangeEvent<HTMLInputElement>) {
+        setId(Number(event.target.value))
+    }
 
     const createNewCharacter = (event:FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        alert("A character was submitted: " + name + " " + species);
+        alert("A character was submitted: " + name);
         const newCharacter:Character = {id:id, name:name, status:status, species:species, type:type}
         props.addNewProduct(newCharacter)
         setId(0)
@@ -33,7 +38,7 @@ export default function NewCharacter(props:AddCharacterProps){
                         type="number"
                         value={id}
                         placeholder={"Please enter a id"}
-                        onChange={(event:ChangeEvent<HTMLInputElement>) => setId(Number(event.target.value))}
+                        onChange={updateId}
                     />
                     </label>
                     <label>

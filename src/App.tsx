@@ -22,7 +22,6 @@ function App() {
                 <Route path={"/"} element={<Welcome/>}/>
                 <Route path={"/characters"} element={<CharacterGallery  characters={characters}/>}/>
                 <Route path={"/newcharacter"} element={<NewCharacter addNewProduct={updateCharacter}/>}/>
-
             </Routes>
         </>
     )
